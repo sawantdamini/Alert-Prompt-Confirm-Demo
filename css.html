@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Contact Form</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:'Segoe UI', sans-serif;
+}
+
+body{
+  min-height:100vh;
+  background:linear-gradient(135deg,#ffe1d6,#fde6f2);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+.container{
+  width:90%;
+  max-width:1100px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:40px;
+}
+
+/* FORM */
+.form-box{
+  width:45%;
+}
+
+.form-box h2{
+  font-size:36px;
+  color:#6b3fa0;
+  margin-bottom:30px;
+  position:relative;
+}
+
+.form-box h2::after{
+  content:"";
+  width:60px;
+  height:4px;
+  background:#6b3fa0;
+  position:absolute;
+  left:0;
+  bottom:-10px;
+  border-radius:10px;
+}
+
+input, textarea{
+  width:100%;
+  padding:14px 20px;
+  margin-bottom:18px;
+  border:none;
+  border-radius:30px;
+  font-size:16px;
+  outline:none;
+}
+
+textarea{
+  height:120px;
+  resize:none;
+  border-radius:20px;
+}
+
+button{
+  padding:14px 40px;
+  border:none;
+  border-radius:30px;
+  background:#6b3fa0;
+  color:#fff;
+  font-size:16px;
+  cursor:pointer;
+}
+
+button:hover{
+  background:#59328a;
+}
+
+/* RIGHT DESIGN */
+.design{
+  width:45%;
+  position:relative;
+}
+
+.card{
+  width:260px;
+  height:160px;
+  background:#c18ad8;
+  border-radius:20px;
+  margin:auto;
+  position:relative;
+}
+
+.card::before{
+  content:"";
+  width:120px;
+  height:30px;
+  background:white;
+  border-radius:20px;
+  position:absolute;
+  top:-15px;
+  left:20px;
+}
+
+.circle{
+  width:200px;
+  height:200px;
+  background:radial-gradient(circle at top,#ff9a9e,#fad0c4);
+  border-radius:50%;
+  position:absolute;
+  right:80px;
+  bottom:-60px;
+  z-index:-1;
+}
+
+/* RESPONSIVE */
+@media(max-width:900px){
+  .container{
+    flex-direction:column;
+  }
+  .form-box,.design{
+    width:100%;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+  <!-- CONTACT FORM -->
+  <div class="form-box">
+    <h2>Get in touch</h2>
+
+    <form onsubmit="return submitForm()"
+          action="https://api.web3forms.com/submit"
+          method="POST">
+
+      <input type="hidden" name="access_key" value="547ba6bf-4bb6-4d36-b8bd-11b1c3fd272a">
+
+      <input type="text" name="name" placeholder="Your Name" required>
+      <input type="email" name="email" placeholder="Your Email" required>
+      <textarea name="message" placeholder="Your Message" required></textarea>
+
+      <button type="submit">Send Message</button>
+    </form>
+  </div>
+
+  <!-- RIGHT DESIGN -->
+  <div class="design">
+    <div class="card"></div>
+    <div class="circle"></div>
+  </div>
+
+</div>
+
+<script>
+
+function submitForm(){
+
+  /* ===== ALERT ===== */
+  alert("You are submitting the contact form.");
+
+  /* ===== PROMPT ===== */
+  let userMessage = prompt("Write any note before submitting (optional):");
+
+  if(userMessage === null){
+  
+    alert("Message sending cancelled!");
+    return false;
+  }
+
+  /* ===== CONFIRM ===== */
+  let confirmSend = confirm("Are you sure you want to submit this form?");
+
+  if(confirmSend){
+    alert("Message sent successfully! Thank you 😊");
+    return true;   // form submit hoil
+  }else{
+    alert("Submission cancelled by user");
+    return false;
+  }
+}
+
+</script>
+
+</body>
+</html>
+
